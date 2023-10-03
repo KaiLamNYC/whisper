@@ -79,7 +79,10 @@ async function getUserProfile(req, res, next) {
 
 		res.json({
 			message: "success",
-			payload: user,
+			payload: {
+				username: user.username,
+				id: user._id,
+			},
 		});
 	} catch (e) {
 		res.json({

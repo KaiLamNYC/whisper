@@ -13,6 +13,8 @@ export function UserContextProvider({ children }) {
 				withCredentials: true,
 			})
 			.then((response) => {
+				setUsername(response.data.payload.username);
+				setId(response.data.payload.id);
 				console.log(response);
 			});
 	}, []);
