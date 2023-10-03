@@ -12,6 +12,7 @@ import {
 	FormMessage,
 } from "./components/ui/form";
 import { Input } from "./components/ui/input";
+import registerUser from "./lib/actions/user.actions";
 import { registerSchema } from "./schemas/register";
 
 export default function Register() {
@@ -24,10 +25,13 @@ export default function Register() {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof registerSchema>) {
+	async function onSubmit(values: z.infer<typeof registerSchema>) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+		// console.log(values);
+
+		const response = await registerUser(values);
+		console.log(response.data);
 	}
 	return (
 		<div className='flex justify-center items-center h-screen flex-col'>
