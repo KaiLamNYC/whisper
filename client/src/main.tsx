@@ -2,9 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import App from "./App";
+import { UserContextProvider } from "./context/UserContext";
 import "./index.css";
-import Login from "./Login";
-import Register from "./Register";
+import Chat from "./routes/Chat";
+import Login from "./routes/Login";
+import Register from "./routes/Register";
 
 const router = createBrowserRouter([
 	{
@@ -17,12 +19,17 @@ const router = createBrowserRouter([
 	{
 		path: "/login",
 		element: <Login />,
-		// loader: contactLoader,
+	},
+	{
+		path: "/chat",
+		element: <Chat />,
 	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<UserContextProvider>
+			<RouterProvider router={router} />
+		</UserContextProvider>
 	</React.StrictMode>
 );

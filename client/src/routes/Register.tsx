@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Button } from "./components/ui/button";
+import { Button } from "../components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -11,13 +11,13 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "./components/ui/form";
-import { Input } from "./components/ui/input";
+} from "../components/ui/form";
+import { Input } from "../components/ui/input";
 // import { UserContext } from "./context/UserContext";
-import registerUser from "./lib/actions/registerUser";
-import { registerSchema } from "./schemas/register";
+import registerUser from "../lib/actions/registerUser";
+import { registerSchema } from "../schemas/register";
 
-export default function Login() {
+export default function Register() {
 	//CONTEXT TO SET USERNAME AND ID AFTER LOG IN
 	// const { setUsername, setId } = useContext(UserContext);
 
@@ -31,17 +31,13 @@ export default function Login() {
 	});
 
 	async function onSubmit(values: z.infer<typeof registerSchema>) {
-		// Do something with the form values.
-		// ✅ This will be type-safe and validated.
-		// console.log(values);
-
 		const response = await registerUser(values);
 		console.log(response.data);
 	}
 
 	return (
 		<div className='flex justify-center items-center h-screen flex-col'>
-			<h1 className='mb-16 text-2xl'>LOGIN TO WHISPER</h1>
+			<h1 className='mb-16 text-2xl'>WELCOME TO WHISPER</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 					<FormField
