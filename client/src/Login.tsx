@@ -17,7 +17,7 @@ import { Input } from "./components/ui/input";
 import registerUser from "./lib/actions/registerUser";
 import { registerSchema } from "./schemas/register";
 
-export default function Register() {
+export default function Login() {
 	//CONTEXT TO SET USERNAME AND ID AFTER LOG IN
 	// const { setUsername, setId } = useContext(UserContext);
 
@@ -41,7 +41,7 @@ export default function Register() {
 
 	return (
 		<div className='flex justify-center items-center h-screen flex-col'>
-			<h1 className='mb-16 text-2xl'>WELCOME TO WHISPER</h1>
+			<h1 className='mb-16 text-2xl'>LOGIN TO WHISPER</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 					<FormField
