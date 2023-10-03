@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { Button } from "../components/ui/button";
 import {
@@ -49,7 +49,7 @@ export default function Login() {
 
 	return (
 		<div className='flex justify-center items-center h-screen flex-col'>
-			<h1 className='mb-16 text-2xl'>LOGIN TO WHISPER</h1>
+			<h1 className='mb-16 text-3xl'>LOGIN TO WHISPER</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 					<FormField
@@ -82,7 +82,10 @@ export default function Login() {
 							</FormItem>
 						)}
 					/>
-					<Button type='submit'>Submit</Button>
+					<Button type='submit'>LOGIN</Button>
+					<p>
+						Not a member? Register <Link to='/'>here</Link>
+					</p>
 				</form>
 			</Form>
 		</div>

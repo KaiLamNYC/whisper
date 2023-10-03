@@ -1,8 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 // import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { Button } from "../components/ui/button";
+
 import {
 	Form,
 	FormControl,
@@ -18,6 +20,7 @@ import registerUser from "../lib/actions/registerUser";
 import { registerSchema } from "../schemas/register";
 
 export default function Register() {
+	const navigate = useNavigate();
 	//CONTEXT TO SET USERNAME AND ID AFTER LOG IN
 	// const { setUsername, setId } = useContext(UserContext);
 
@@ -33,11 +36,12 @@ export default function Register() {
 	async function onSubmit(values: z.infer<typeof registerSchema>) {
 		const response = await registerUser(values);
 		console.log(response.data);
+		navigate("/login");
 	}
 
 	return (
 		<div className='flex justify-center items-center h-screen flex-col'>
-			<h1 className='mb-16 text-2xl'>WELCOME TO WHISPER</h1>
+			<h1 className='mb-16 text-3xl'>REGISTER FOR WHISPER</h1>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
 					<FormField
@@ -70,7 +74,10 @@ export default function Register() {
 							</FormItem>
 						)}
 					/>
-					<Button type='submit'>Submit</Button>
+					<Button type='submit'>REGISTER</Button>
+					<p>
+						Already a member? Login <Link to='/login'>here</Link>
+					</p>
 				</form>
 			</Form>
 		</div>
