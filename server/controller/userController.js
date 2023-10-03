@@ -58,7 +58,7 @@ async function signIn(req, res) {
 					(err, token) => {
 						if (err) throw err;
 						res.cookie("token", token).status(201).json({
-							_id: user._id,
+							id: user._id,
 						});
 					}
 				);

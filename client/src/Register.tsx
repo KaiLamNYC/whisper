@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+// import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "./components/ui/button";
@@ -12,10 +13,14 @@ import {
 	FormMessage,
 } from "./components/ui/form";
 import { Input } from "./components/ui/input";
+// import { UserContext } from "./context/UserContext";
 import registerUser from "./lib/actions/user.actions";
 import { registerSchema } from "./schemas/register";
 
 export default function Register() {
+	//CONTEXT TO SET USERNAME AND ID AFTER LOG IN
+	// const { setUsername, setId } = useContext(UserContext);
+
 	//ADDING ZOD TYPE SAFETY WITH REGISTER SCHEMA
 	const form = useForm<z.infer<typeof registerSchema>>({
 		resolver: zodResolver(registerSchema),
@@ -33,6 +38,7 @@ export default function Register() {
 		const response = await registerUser(values);
 		console.log(response.data);
 	}
+
 	return (
 		<div className='flex justify-center items-center h-screen flex-col'>
 			<h1 className='mb-16 text-2xl'>WELCOME TO WHISPER</h1>
