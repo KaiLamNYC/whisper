@@ -72,7 +72,25 @@ async function signIn(req, res) {
 	}
 }
 
+async function getUserProfile(req, res, next) {
+	try {
+		//USERID COMING FROM JWT TOKEN
+		let user = await User.findById({ _id: req.userId });
+
+		res.json({
+			message: "success",
+			payload: user,
+		});
+	} catch (e) {
+		res.json({
+			message: "failure",
+			payload: `failed to create user ${e}`,
+		});
+	}
+}
+
 module.exports = {
 	registerUser,
 	signIn,
+	getUserProfile,
 };

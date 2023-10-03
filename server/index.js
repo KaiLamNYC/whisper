@@ -11,6 +11,9 @@ const connectToMongoDB = require("./database/mongodb");
 
 require("dotenv").config();
 
+//COOKIE PARSER
+const cookieParser = require("cookie-parser");
+
 //CORS STUFF
 app.use(
 	cors({
@@ -19,6 +22,8 @@ app.use(
 		credentials: true,
 	})
 );
+
+app.use(cookieParser());
 
 //LOG REQUESTS IN TERMINAL WITH MORGAN
 app.use(logger("dev"));
