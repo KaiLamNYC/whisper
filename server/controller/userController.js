@@ -33,7 +33,7 @@ async function registerUser(req, res, next) {
 
 async function signIn(req, res) {
 	try {
-		const user = await User.findOne({ email: req.body.email });
+		const user = await User.findOne({ username: req.body.username });
 
 		if (!user) {
 			///ERROR NO USER FOUND
@@ -58,7 +58,7 @@ async function signIn(req, res) {
 					(err, token) => {
 						if (err) throw err;
 						res.cookie("token", token).status(201).json({
-							message: "successfully logged in",
+							_id: user._id,
 						});
 					}
 				);
@@ -74,4 +74,5 @@ async function signIn(req, res) {
 
 module.exports = {
 	registerUser,
+	signIn,
 };
