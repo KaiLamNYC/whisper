@@ -10,7 +10,7 @@ import { UserContext } from "../context/UserContext";
 
 export default function Chat() {
 	const navigate = useNavigate();
-	const { setUsername, username, setId } = useContext(UserContext);
+	const { setUsername, username, setId, id } = useContext(UserContext);
 
 	useEffect(() => {
 		axios
@@ -35,6 +35,7 @@ export default function Chat() {
 			<div className='w-1/4 flex flex-col'>
 				<h1 className='text-4xl'>WHISPER</h1>
 				<h1>Welcome {username}</h1>
+				<h1>Welcome {id}</h1>
 				<Button onClick={handleSignOut} className='w-[100px]'>
 					SIGN OUT
 				</Button>

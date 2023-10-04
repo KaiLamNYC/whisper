@@ -36,6 +36,10 @@ app.use(express.json());
 const userRouter = require("./routes/userRouter");
 app.use("/user", userRouter);
 
+//CHAT ROUTER
+const chatRouter = require("./routes/chatRouter");
+app.use("/chat", chatRouter);
+
 app.listen(PORT, () => {
 	console.log(`beep boop server on ${PORT}`);
 

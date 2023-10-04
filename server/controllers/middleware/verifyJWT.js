@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 async function verifyJWT(req, res, next) {
-	const token = req.cookies?.token;
-
+	const token = req.cookies.token;
+	console.log(`incoming token: ${token}`);
 	if (!token) {
 		res.json({
 			message: "token is missing",
@@ -16,6 +16,7 @@ async function verifyJWT(req, res, next) {
 					message: `authentication failed ${err}`,
 				});
 			} else {
+				console.log(`decodedId: ${decoded.id}`);
 				req.userId = decoded.id;
 
 				next();

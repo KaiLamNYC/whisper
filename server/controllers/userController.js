@@ -49,19 +49,23 @@ async function signIn(req, res) {
 			} else {
 				//ALL INFO IS CORRECT CONTINUE TO LOGIN
 				//RETURNING JWT AS COOKIE WITH USER ID
-				jwt.sign(
+				console.log(`logging in id ${user._id}`);
+				const token = jwt.sign(
 					{ id: user._id },
 					process.env.ACCESS_TOKEN_SECRET,
 					{
 						expiresIn: "1d",
-					},
-					(err, token) => {
-						if (err) throw err;
-						res.cookie("token", token).status(201).json({
-							id: user._id,
-						});
 					}
+					// (err, token) => {
+					// 	if (err) throw err;
+					// 	res.cookie("token", token).status(201).json({
+					// 		id: user._id,
+					// 	});
+					// }
 				);
+				res.cookie("token", token).status(201).json({
+					id: user._id,
+				});
 			}
 		}
 	} catch (e) {
@@ -99,7 +103,7 @@ async function searchAllUsers(req, res, next) {
 
 		// const users = await User.find()
 		// console.log(keyword);
-
+		console.log(req.userId);
 		const keyword = req.query.search
 			? {
 					username: { $regex: req.query.search, $options: "i" },
