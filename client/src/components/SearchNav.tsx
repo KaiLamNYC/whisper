@@ -26,22 +26,25 @@ const SearchNav = () => {
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 
-	const handleAccessChat = async (userId) => {
-		// try {
-		// 	console.log("registering user");
-		// 	const response = await axios.post(
-		// 		"http://localhost:3000/chat/accessChat",
-		// 		{ userId },
-		// 		{
-		// 			withCredentials: true,
-		// 		}
-		// 	);
-		// 	return response;
-		// } catch (e) {
-		// 	console.log(e);
-		// 	throw new Error(`Failed to crate chat : ${e}`);
-		// }
-	};
+	async function handleAccessChat(userId) {
+		// console.log(userId);
+		try {
+			console.log("registering user");
+			const response = await axios.post(
+				"http://localhost:3000/chat/accessChat",
+				{ id: userId },
+				{
+					withCredentials: true,
+				}
+			);
+			if (!chat.find((c) => c._id === response.data.payload._id))
+				setChat([response.data.payload, ...chat]);
+			setSelectedChat(response.data.payload);
+		} catch (e) {
+			console.log(e);
+			throw new Error(`Failed to crate chat : ${e}`);
+		}
+	}
 
 	const handleSearch = async () => {
 		if (!search) {
@@ -95,7 +98,7 @@ const SearchNav = () => {
 					<Card key={user._id}>
 						<div className='flex'>
 							<h2>{user.username}</h2>
-							<Button onClick={handleAccessChat(user._id)} type='submit'>
+							<Button onClick={() => handleAccessChat(user._id)} type='submit'>
 								Chat
 							</Button>
 						</div>

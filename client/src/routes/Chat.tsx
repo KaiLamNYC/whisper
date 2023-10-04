@@ -8,6 +8,8 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 
 import ChatLogs from "../components/ChatLogs";
+import MyContacts from "../components/MyContacts";
+import NewGroupChat from "../components/NewGroupChat";
 import { UserContext } from "../context/UserContext";
 
 export default function Chat() {
@@ -37,6 +39,8 @@ export default function Chat() {
 			<div className='w-1/4 flex flex-col'>
 				<h1 className='text-4xl'>WHISPER</h1>
 				<h1>Welcome {username}</h1>
+				<NewGroupChat />
+
 				<Button onClick={handleSignOut} className='w-[100px]'>
 					SIGN OUT
 				</Button>
@@ -67,6 +71,7 @@ export default function Chat() {
 					</SheetContent>
 				</Sheet> */}
 				<SearchNav />
+				<MyContacts />
 			</div>
 			<div className='w-3/4 p-2 flex flex-col '>
 				<ChatLogs />
