@@ -12,7 +12,7 @@ const messageSchema = new mongoose.Schema(
 			type: String,
 			default: false,
 		},
-		parentChat: {
+		chatId: {
 			type: Schema.Types.ObjectId,
 			ref: "Chat",
 		},

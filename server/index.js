@@ -40,6 +40,10 @@ app.use("/user", userRouter);
 const chatRouter = require("./routes/chatRouter");
 app.use("/chat", chatRouter);
 
+//MESSAGES ROUTER
+const messagesRouter = require("./routes/messageRouter");
+app.use("/message", messagesRouter);
+
 app.listen(PORT, () => {
 	console.log(`beep boop server on ${PORT}`);
 
