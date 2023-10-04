@@ -3,9 +3,11 @@ import Cookies from "js-cookie";
 import { Send } from "lucide-react";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "../components/avatar";
+import SearchNav from "../components/SearchNav";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+
+import ChatLogs from "../components/ChatLogs";
 import { UserContext } from "../context/UserContext";
 
 export default function Chat() {
@@ -22,7 +24,7 @@ export default function Chat() {
 				setId(response.data.payload.id);
 				console.log(response);
 			});
-	}, [username]);
+	}, [username, setId, setUsername]);
 
 	const handleSignOut = () => {
 		Cookies.remove("token");
@@ -35,13 +37,40 @@ export default function Chat() {
 			<div className='w-1/4 flex flex-col'>
 				<h1 className='text-4xl'>WHISPER</h1>
 				<h1>Welcome {username}</h1>
-				<h1>Welcome {id}</h1>
 				<Button onClick={handleSignOut} className='w-[100px]'>
 					SIGN OUT
 				</Button>
+				{/* <Sheet>
+					<SheetTrigger asChild>
+						<Button variant='outline'>Search Users</Button>
+					</SheetTrigger>
+					<SheetContent>
+						<SheetHeader>
+							<SheetTitle>Search For User</SheetTitle>
+							<SheetDescription>
+								Click on a user below to start a conversation
+							</SheetDescription>
+						</SheetHeader>
+						<div className='grid gap-4 py-4'>
+							<div className='grid grid-cols-4 items-center gap-4'>
+								<Label htmlFor='username' className='text-right'>
+									Username
+								</Label>
+								<Input id='username' value='@peduarte' className='col-span-3' />
+							</div>
+						</div>
+						<SheetFooter>
+							<SheetClose asChild>
+								<Button type='submit'>Save changes</Button>
+							</SheetClose>
+						</SheetFooter>
+					</SheetContent>
+				</Sheet> */}
+				<SearchNav />
 			</div>
 			<div className='w-3/4 p-2 flex flex-col '>
-				<div className='flex-grow'>chat history</div>
+				<ChatLogs />
+
 				<div className='flex flex-row gap-2'>
 					<Input placeholder='start typing here' className=' p-2' type='text' />
 					<Button>
