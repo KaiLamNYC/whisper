@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import { Button } from "./ui/button";
 import { Card, CardTitle } from "./ui/card";
@@ -21,7 +21,7 @@ const MyContacts = () => {
 			throw new Error(`Failed to login user: ${error}`);
 		}
 	};
-	console.log(chat);
+	// console.log(chat);
 
 	//JUST TO DISPLAY NAME IF NOT GROUPCHAT
 	const getSender = (id, users) => {
@@ -29,7 +29,7 @@ const MyContacts = () => {
 	};
 	useEffect(() => {
 		fetchChats();
-	}, []);
+	});
 	return (
 		<div className='flex flex-col'>
 			<h1 className='text-lg'>MESSAGES</h1>
@@ -41,9 +41,7 @@ const MyContacts = () => {
 							: contact?.chatName}
 					</CardTitle>
 
-					<Button onClick={() => setSelectedChat(id, contact.users)}>
-						OPEN
-					</Button>
+					<Button onClick={() => setSelectedChat(contact)}>OPEN</Button>
 				</Card>
 			))}
 		</div>

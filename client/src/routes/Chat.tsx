@@ -24,7 +24,7 @@ export default function Chat() {
 			.then((response) => {
 				setUsername(response.data.payload.username);
 				setId(response.data.payload.id);
-				console.log(response);
+				// console.log(response);
 			});
 	}, [username, setId, setUsername]);
 
