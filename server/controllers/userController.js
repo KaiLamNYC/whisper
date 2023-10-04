@@ -92,8 +92,36 @@ async function getUserProfile(req, res, next) {
 	}
 }
 
+async function searchAllUsers(req, res, next) {
+	try {
+		//GRABBING QUERY FROM THE URL
+		// const keyword = req.query.search;
+
+		// const users = await User.find()
+		// console.log(keyword);
+
+		const keyword = req.query.search
+			? {
+					username: { $regex: req.query.search, $options: "i" },
+			  }
+			: {};
+
+		const users = await User.find(keyword).find({ _id: { $ne: req.userId } });
+		res.json({
+			message: "success",
+			payload: users,
+		});
+	} catch (e) {
+		res.json({
+			message: "failure",
+			payload: `failed to getallusers ${e}`,
+		});
+	}
+}
+
 module.exports = {
 	registerUser,
 	signIn,
 	getUserProfile,
+	searchAllUsers,
 };

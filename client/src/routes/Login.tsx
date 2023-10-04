@@ -41,10 +41,14 @@ export default function Login() {
 		// setUsername(values.username);
 		// console.log("clicked");
 		const response = await loginUser(values);
-		console.log(response.data);
-		setUsername(values.username);
+		console.log(response);
 
-		navigate("/chat");
+		if (response.data.id) {
+			setUsername(values.username);
+			navigate("/chat");
+		}
+		// setUsername(values.username);
+		// navigate("/chat");
 	}
 
 	return (
