@@ -68,7 +68,7 @@ const NewGroupChat = () => {
 
 		try {
 			const data = await axios.post(
-				`http://localhost:3000/user/createGroupChat`,
+				`http://localhost:3000/chat/createGroupChat`,
 				{
 					name: groupChatName,
 					users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -79,9 +79,16 @@ const NewGroupChat = () => {
 			);
 			// console.log(data.data.payload);
 			setChat([data.data.payload, ...chat]);
+			toast({
+				variant: "success",
+				title: "created group chat!",
+			});
 		} catch (error) {
 			console.log(error);
-			throw new Error(`Failed to create group chat user: ${error}`);
+			toast({
+				variant: "destructive",
+				title: `${error.message}`,
+			});
 		}
 	};
 	return (
