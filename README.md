@@ -36,3 +36,11 @@ Given more time and resources, several improvements could be made to enhance the
 - [React Hook Form](https://react-hook-form.com/): A library for flexible and efficient form handling in React.
 
 ---
+
+## Things I Learned
+
+-**Socket.io**: Prior to this project, I had no experience with Socket.io, but I had been eager to explore WebSockets. This assignment provided an excellent opportunity for me to dive into Socket.io. Before tackling this project, I invested time in creating several small Socket.io projects to familiarize myself with the intricacies of real-time communication. As a result, I gained valuable insights into building real-time features and enhancing user experiences through WebSockets.
+
+-**Vite**: In the initial stages of this project, I encountered challenges with integrating Socket.io into Next.js, which was my initial choice for building the application. To address this, I opted to use Vite, a build tool that I had used previously for creating a minimal single-page portfolio. While working on this project with Vite, I had the chance to delve deeper into React and explore the latest updates in React Router. This experience not only allowed me to improve my knowledge of Vite but also provided valuable insights into optimizing the development process for large-scale applications.
+
+-**Express**: While I've been predominantly using Next.js for my recent projects, I thoroughly enjoyed the opportunity to work with Express in this assignment. This project leaned more towards the backend, allowing me to revisit Express and relish the process of building a backend-intensive application. It was a refreshing change of pace that broadened my skill set and understanding of backend development.
